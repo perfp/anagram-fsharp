@@ -4,13 +4,49 @@
 namespace Anagram
 
 /// This is a sample module to contain functions and values
-module SampleModule = 
-     /// This is a sample value
-     let sampleValue = 7 + 10
+module AnagramCompare =      
+    
+   
 
-     /// This is a sample function
-     let sampleFunction argument1 argument2 = 
-         argument1 + argument2 
+    let compareSequence = 
+        Seq.compareWith (fun x y -> if x = y then 0 else 1)
+
+    let hasLetters (word:string)  =
+         word
+         |> Seq.sortBy (fun x -> x) 
+         |> Seq.countBy id
+
+    let IsAnagramOf (word:string) (candidate:string) : bool = 
+        let wordletters = hasLetters word
+        let candidateletters = hasLetters candidate 
+        let wordCompare = compareSequence wordletters candidateletters
+
+        if word = candidate then false
+        elif word.Length <> candidate.Length then false         
+        elif wordCompare  <> 0 then false 
+        else true      
+         
+        
+    let  FindAnagrams ( wordlist : string list) : string list= 
+        let rec buildList word wordlist acc =
+            match wordlist with            
+            | head :: tail -> buildList "" tail (head::acc)
+            |[] -> List.rev acc
+        buildList "" wordlist []
+
+
+        
+            
+            
+        
+
+
+
+
+
+
+
+
 
 /// This is a sample class type
 type SampleLibraryClassType(argument1: int, argument2: int) = 

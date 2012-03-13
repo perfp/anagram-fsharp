@@ -7,7 +7,12 @@
 
 #load "Module1.fs"
 open Anagram
+let word = ["ole"; "olsen"; "solen"; "kanskje"]
+AnagramCompare.FindAnagrams word
 
+let a = AnagramCompare.hasLetters "ccadbe"
+let b = AnagramCompare.hasLetters "abccdd"
+let c = AnagramCompare.compareSequence a b
+AnagramCompare.IsAnagramOf "not" "wen"
 
-// Define your library scripting code here
-
+Seq.compareWith (fun x y -> if x=y then 0 else 1) a b
