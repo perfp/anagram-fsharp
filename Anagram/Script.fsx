@@ -5,14 +5,11 @@
 // Learn more about F# at http://fsharp.net. See the 'F# Tutorial' project
 // for more guidance on F# programming.
 
-#load "Module1.fs"
+#load "Anagram.fs"
 open Anagram
-let word = ["ole"; "olsen"; "solen"; "kanskje"]
-AnagramCompare.FindAnagrams word
+let words = ["ole"; "olsen"; "solen"; "kanskje"]
 
-let a = AnagramCompare.hasLetters "ccadbe"
-let b = AnagramCompare.hasLetters "abccdd"
-let c = AnagramCompare.compareSequence a b
-AnagramCompare.IsAnagramOf "not" "wen"
-
-Seq.compareWith (fun x y -> if x=y then 0 else 1) a b
+words 
+|> AnagramCompare.sortWords
+|> AnagramCompare.groupWords
+|> AnagramCompare.printWords
