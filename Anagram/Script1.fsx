@@ -16,14 +16,14 @@ let sequence = groupedWords |> Seq.map (fun (x, y) -> Seq.map (fun (a, b) -> b) 
 
 
 // C#
-let printSequence list = 
+let printWithLoop list = 
     for (i, v) in list do     
         for (c, s) in v do
             printf "%s, " s
         printfn ""
 
 // Linq / Lambda
-let printSequence2 list = 
+let printWithLambda list = 
      Seq.iter (fun (i, v) ->
             if Seq.length v  > 1 then
                 Seq.iter (fun (c, s) -> 
@@ -35,7 +35,7 @@ let printSequence2 list =
 words
 |> sortWords
 |> groupWords
-|> printSequence2
+|> printWithLambda
 
 
 
