@@ -14,7 +14,6 @@ let groupedWords = groupWords sortedWords
 let sequence = groupedWords |> Seq.map (fun (x, y) -> Seq.map (fun (a, b) -> b) y);;
     
 
-
 // C#
 let printWithLoop list = 
     for (i, v) in list do     

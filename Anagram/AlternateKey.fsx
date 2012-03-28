@@ -1,16 +1,15 @@
 ﻿
-let createKeyValueUsingPrime (word : string) = 
-    let primeAlpha = dict ['a', 2; 'b',3; 'c',5; 'd',7;'e', 11; 'f',13; 'g',17; 'h',19;'i',23; 'j',29; 'k',31; 'l',37; 'm',41; 'n',43; 'o', 47; 'p',53;'q',59; 'r',61; 's',67; 't',71; 'u',73; 'v',79; 'w',83; 'x',89; 'y',97; 'z',101]
-    let dictAna = dict []
-    
-    
+let createKeyValue (word : string) : uint64 * string = 
+    let primeAlpha = dict ['a', 2UL; 'b',3UL; 'c',5UL; 'd',7UL;'e', 11UL; 'f',13UL; 'g',17UL; 'h',19UL;'i',23UL; 'j',29UL; 'k',31UL; 'l',37UL; 'm',41UL; 'n',43UL; 'o', 47UL; 'p',53UL;'q',59UL; 'r',61UL; 's',67UL; 't',71UL; 'u',73UL; 'v',79UL; 'w',83UL; 'x',89UL; 'y',97UL; 'z',101UL; 'æ', 103UL; 'ø', 107UL; 'å', 109UL;]
+       
     let rec loop list acc = 
         match list with 
         | head :: tail -> loop tail (acc * primeAlpha.Item head )
         | [] -> acc
     
     let charlist = Array.toList(word.ToCharArray())
-    let key = loop charlist 1
+    let key = loop charlist 1UL
     key, word
 
-createKeyValueUsingPrime "abc"   
+createKeyValue "høyesterettsjustitiarius"   
+
